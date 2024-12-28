@@ -2,8 +2,20 @@ package entities;
 
 public class Product {
     public String name;
-    public int price;
+    public double price;
     public int quantity;
+
+    public Product(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
 
     public double totalValueInStock(){
         return price * quantity;
@@ -13,6 +25,18 @@ public class Product {
         this.quantity += quantity;
     }
 
-    public void
+    public void removeProduct(int quantity){
+        this.quantity -= quantity;
+    }
+
+    public String toString(){
+        return name
+                + ", $"
+                + String.format("%.2f", price)
+                + ", "
+                + quantity
+                + " units, total: $ "
+                + String.format("%.2f", totalValueInStock());
+    }
 }
 
